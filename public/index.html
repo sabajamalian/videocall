@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Call App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Video Call</h1>
+            <div class="room-info">
+                <span id="roomId">Room: </span>
+                <span id="status">Connecting...</span>
+            </div>
+        </header>
+
+        <main class="video-container">
+            <div class="video-wrapper">
+                <video id="localVideo" autoplay muted playsinline></video>
+                <div class="video-label">You</div>
+            </div>
+            <div class="video-wrapper">
+                <video id="remoteVideo" autoplay playsinline></video>
+                <div class="video-label">Remote User</div>
+            </div>
+        </main>
+
+        <div id="roomFullOverlay" class="overlay hidden">
+            <div class="overlay-content">
+                <h2>Room is Full</h2>
+                <p>This room already has 2 participants. Please try a different room.</p>
+                <button onclick="window.location.href='/'">Go Back</button>
+            </div>
+        </div>
+
+        <div id="waitingOverlay" class="overlay">
+            <div class="overlay-content">
+                <h2>Waiting for someone to join...</h2>
+                <p>Share this URL with someone to start the video call</p>
+                <div class="url-display">
+                    <input type="text" id="shareUrl" readonly>
+                    <button onclick="copyUrl()">Copy URL</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
